@@ -11,13 +11,7 @@ function Transfer({ address, setBalance }) {
     evt.preventDefault();
 
     try {
-      const {
-        data: { balance },
-      } = await server.post(`send`, {
-        sender: address,
-        amount: parseInt(sendAmount),
-        recipient,
-      });
+      const { data: { balance }, } = await server.post(`send`, { sender: address, amount: parseInt(sendAmount), recipient, });
       setBalance(balance);
     } catch (ex) {
       alert(ex.response.data.message);
@@ -37,10 +31,10 @@ function Transfer({ address, setBalance }) {
         ></input>
       </label>
 
+      
       <label>
         Recipient
         <input
-          placeholder="Type an address, for example: 0x2"
           value={recipient}
           onChange={setValue(setRecipient)}
         ></input>
